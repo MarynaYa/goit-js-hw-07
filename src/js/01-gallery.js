@@ -56,6 +56,7 @@ function onKeyPress(event) {
      const isKeyCode = event.code === ESC_KEY_CODE;
 
     if (isKeyCode) {
-        instance.remove(() => onModalClose);
+        instance.remove();
+        window.removeEventListener(`keydown`, onModalClose); // откл слушателя
     }
 }
