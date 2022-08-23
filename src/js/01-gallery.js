@@ -39,24 +39,18 @@ function onContainerClick(event) {
  instance = basicLightbox.create(
     `<img class="modal__image" src="${currentImageUrl}" />`
   );
- instance.show();
+ instance.show();          // отк модального окна
+ window.addEventListener(`keydown`, onKeyPress); 
 }
-//// Модальное окно_______________
-       // ф-ция откр модального окна
-function onModalOpen() {
-    window.addEventListener(`keydown`, onKeyPress); // вкл слушателя на window 
-}
-    // ф-ция закр модал окна
-function onModalClose() {
-    window.addEventListener(`keydown`, onKeyPress); // вкл слушателя на window
-}
+
      // ф-ция собітия
 function onKeyPress(event) { 
     const ESC_KEY_CODE = `Escape`;                     // вешаем возможность закр при нажатии ESC
      const isKeyCode = event.code === ESC_KEY_CODE;
 
     if (isKeyCode) {
-        instance.remove();
-        window.removeEventListener(`keydown`, onModalClose); // откл слушателя
+        instance.close();
+        window.removeEventListener(`keydown`, onKeyPress); // откл слушателя
     }
 }
+
