@@ -53,4 +53,3 @@ function onKeyPress(event) {
         window.removeEventListener(`keydown`, onKeyPress); // откл слушателя
     }
 }
-
