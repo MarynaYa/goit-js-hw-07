@@ -37,10 +37,14 @@ function onContainerClick(event) {
 }
  const currentImageUrl = event.target.dataset.source;  // доступ к ориг.карточки
  instance = basicLightbox.create(
-    `<img class="modal__image" src="${currentImageUrl}" />`
+    `<img class="modal__image" src="${currentImageUrl}" />`,
+    {
+    onShow: (instance) => {
+      window.addEventListener(`keydown`, onKeyPress);   //добавляем слушателя из библиотеки
+    },
+  }
   );
  instance.show();          // отк модального окна
- window.addEventListener(`keydown`, onKeyPress); 
 }
 
      // ф-ция собітия
